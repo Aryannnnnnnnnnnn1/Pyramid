@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--bg: #f7f8fb;
+		--fg: #0b0d12;
+	}
+	.dark {
+		--bg: #0b0d12;
+		--fg: #e6eaf2;
+	}
+	html {
+		scroll-behavior: smooth;
+	}
+	body {
+		@apply bg-[var(--bg)] text-[var(--fg)] antialiased selection:bg-accent/20 selection:text-accent;
+	}
+	h1,h2,h3,h4 {
+		@apply font-display tracking-tight;
+	}
+}
+
+@layer utilities {
+	.ripple {
+		position: relative;
+		overflow: hidden;
+	}
+	.ripple:after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(circle, rgba(255,255,255,0.25) 10%, transparent 10.01%) center/10px 10px;
+		opacity: 0;
+		transition: opacity 0.3s;
+	}
+	.ripple:hover:after {
+		opacity: 0.35;
+	}
+}
